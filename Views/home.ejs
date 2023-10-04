@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Reservation System </title>
+    <link rel="stylesheet" href="/home.css">
+    <script src="https://kit.fontawesome.com/9b207dd34b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="logo">
+        B Airline <i class="fa-solid fa-plane"></i>
+        <nav>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="contact">Contact US</a></li>
+                <li ><a class="log" href="login">Login</a></li>
+            </ul>
+        </nav>
+        <i class="fa-solid fa-bars"></i>
+    </div>
+<!-- middl banner and image -->
+    <div class="center-img">
+        <img src="/Home-middle.jpg" alt="Airplane">
+    </div>
+
+    <div class="banner">
+        <div class="banner-text">
+            <h1>S e a r c h . B o o k . T r a v e l .</h1><br>
+            <p>Book your flight with us and get the best deals</p>
+        </div>
+    </div>
+<!-- form  -->
+<section class="container">
+    <h1 class="head"><b>Check Your Flights</b></h1>
+    <style>
+        .head{
+            text-align: center;
+            font-size: 40px;
+        }
+    </style>
+    <form action="/getFlights" class="form" method="GET">   
+      <label class="b">C I T Y</label>
+      <style>
+        .b{
+          font-weight: bolder;
+
+        }
+      </style>
+      <div class="column">
+          <div class="select-box">
+            <select class="sec" name="Dep_Country">
+              <option hidden>F R O M</option>
+              <option value="CGK">CGK(Jakarta)</option>
+              <option value="DPS">DPS(Denpasar)</option>
+              <option value="BIA">BIA(Colombo)</option>
+              <option value="HRI">HRI(Hambantota)</option>
+              <option value="DEL">DEL(Delhi)</option>
+              <option value="BOM">BOM(Mumbai)	</option>
+              <option value="MAA">MAA(Chennai)</option>
+              <option value="BKK">BKK(Bangkok)</option>
+              <option value="DMK">DMK(Don Mueang)	</option>
+              <option value="SIN">SIN(Singapore)</option>
+              <option value="JFK">JFK(New York City)</option>
+            </select>
+          </div>
+          <style>
+            .sec{
+              background: none;
+            }
+          </style>
+          <div class="select-box">
+              <select class="sec" name="Dest_Country">
+                <option hidden>T O</option>
+                <option value="CGK">CGK(Jakarta)</option>
+                <option value="DPS">DPS(Denpasar)</option>
+                <option value="BIA">BIA(Colombo)</option>
+                <option value="HRI">HRI(Hambantota)</option>
+                <option value="DEL">DEL(Delhi)</option>
+                <option value="BOM">BOM(Mumbai)	</option>
+                <option value="MAA">MAA(Chennai)</option>
+                <option value="BKK">BKK(Bangkok)</option>
+                <option value="DMK">DMK(Don Mueang)	</option>
+                <option value="SIN">SIN(Singapore)</option>
+                <option value="JFK">JFK(New York City)</option>
+              </select>
+            </div>
+        </div>
+      <div class="column">
+          <div class="input-box">
+              <label>DEPARTURE DATE</label>
+              <input class="sec" type="date" name="From_date" id="dateInput" min="2022-01-01" required />
+            </div>
+        <div class="input-box">
+          <label>DESTINATION DATE</label>
+          <input class="sec" type="date" name="To_date" id="dateInput1" min="2022-01-01" required />
+        </div>
+      </div>
+      <LAbel></LAbel>
+      <button type="submit">SEARCH</button>
+    </form>
+  </section>
+  <!-- price card -->
+  <div class="content">
+    <div class="card one">
+      <div class="top">
+        <div class="title">Economy Class</div>
+        <div class="price-sec">
+          <span class="dollar">$</span>
+          <span class="price">199</span>
+          <span class="decimal">.99</span>
+        </div>
+      </div>
+      <div class="info">Limited features you will get on this package or plan</div>
+      <div class="details">
+        <div class="one">
+          <span>Baggage fee (first piece): $25</span>
+        </div>
+        <div class="one">
+          <span>Baggage fee (each additional piece): $50</span>
+        </div>
+        <div class="one">
+          <span>Meal service</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Seat selection: $10</span>
+        </div>
+        <div class="one">
+          <span>Priority boarding: $15</span>
+        </div>
+        <div class="one">
+          <span>Total price: $199.99 + $25 + ($50 x number of additional bags) + $10 + $15</span>
+        </div>
+        <button>Purchase</button>
+      </div>
+    </div>
+    <div class="card two">
+      <div class="top">
+        <div class="title">Business Class</div>
+        <div class="price-sec">
+          <span class="dollar">$</span>
+          <span class="price">799</span>
+          <span class="decimal">.99</span>
+        </div>
+      </div>
+      <div class="info">Only some features you will get on this package or plan</div>
+      <div class="details">
+        <div class="one">
+          <span>Baggage fee (first piece)</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Baggage fee (each additional piece)</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Meal service</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Seat selection</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Priority boarding</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Total price: $799.99</span>
+        </div>
+        <!-- <br> -->
+        <br>
+        <button>Purchase</button>
+      </div>
+    </div>
+    <div class="card three">
+      <div class="top">
+        <div class="title">Platinum Class</div>
+        <div class="price-sec">
+          <span class="dollar">$</span>
+          <span class="price">1999</span>
+          <span class="decimal">.99</span>
+        </div>
+      </div>
+      <div class="info">All features you will get on this package or plan</div>
+      <div class="details">
+        <div class="one">
+          <span>Baggage fee (each additional piece)</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Meal service</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Seat selection</span>
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="one">
+          <span>Plus additional perks such as lounge access, higher baggage allowance, priority check-in and priority baggage handling</span>
+          
+        </div>
+        <div class="one">
+          <span>Total price: $1999.99</span>
+          <!-- <i class="fas fa-times"></i> -->
+        </div>
+        <br>
+        <button>Purchase</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- footer ----------------------------------------------------------------------->
+ <footer>
+   <div class="content">
+     <div class="left box">
+       <div class="upper">
+         <div class="topic">About us</div>
+         <p>B Airways is a subsidiary of Virgin Airlines but functions independently. It currently caters only 
+            to the needs of small distance, internal flights in Indonesia. Hence, they do not possess access 
+            to the advance airline reservation system of Virgin.</p>
+       </div>
+       <div class="lower">
+         <div class="topic">Contact us</div>
+         <div class="phone">
+           <a href="#"><i class="fas fa-phone-volume"></i>+947 9089 6767</a>
+         </div>
+         <div class="email">
+           <a href="#"><i class="fas fa-envelope"></i>bairline@gmail.com</a>
+         </div>
+       </div>
+     </div>
+     <div class="middle box">
+       <div class="topic">Our Services</div>
+       <div><a href="#">Searching for flights</a></div>
+       <div><a href="#">Comparing prices</a></div>
+       <div><a href="#">Booking tickets</a></div>
+       <div><a href="#">Managing your booking</a></div>
+       <div><a href="#">Providing travel information</a></div>
+       <div><a href="#">Offering additional services</a></div>
+     </div>
+     <div class="right box">
+       <div class="topic">Subscribe us</div>
+       <form action="#">
+         <input type="text" placeholder="Enter email address">
+         <input type="submit" name="#" value="Send">
+         <div class="media-icons">
+           <a href="#"><i class="fab fa-facebook-f"></i></a>
+           <a href="#"><i class="fab fa-instagram"></i></a>
+           <a href="#"><i class="fab fa-twitter"></i></a>
+           <a href="#"><i class="fab fa-youtube"></i></a>
+           <a href="#"><i class="fab fa-linkedin-in"></i></a>
+         </div>
+        <a href="admin/adminLogin" class="bt">ADMIN</a>
+        <style>
+            .bt {
+              background-color:black;
+              border: none;
+              color: white;
+              padding: 5px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin-top: 10px;
+              cursor: pointer;
+            }
+            </style>
+       </form>
+     </div>
+   </div>
+ </footer>
+<script>
+   var x= document.getElementById("roundTrip");
+   var y= document.getElementById("oneway");
+   var z= document.getElementById("btn");
+
+   function oneway(){
+       x.style.left="-400px";
+       y.style.left="50px";
+       z.style.left="120px";
+   }
+   function roundTrip(){
+       x.style.left="50px";
+       y.style.left="450px";
+       z.style.left="0px";
+   }
+</script>
+<script>
+    let menuicon = document.querySelector('.fa-bars');
+    var navigation =document.querySelector('nav');
+    var formBox=document.querySelector('.form-box');
+    menuicon.onclick = function(){
+        if(menuicon.classList.contains('fa-bars')){
+            menuicon.classList.remove('fa-bars');
+            menuicon.classList.add('fa-times');
+            navigation.className="expand";
+        }
+        else{
+            menuicon.classList.remove('fa-times');
+            menuicon.classList.add('fa-bars');
+            navigation.className="";
+        }
+    }
+</script>
+<!-- add method to only can add feuther dates -->
+<script>
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+  var yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById("dateInput").min = today;
+  document.getElementById("dateInput1").min = today;
+</script>
+</body>
+</html>

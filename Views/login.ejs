@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/9b207dd34b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/login.css" />
+
+    <title>Login & Registration Form</title>
+  </head>
+  <body>
+    <div class="logo">
+      B Airline <i class="fa-solid fa-plane"></i>
+      <nav>
+        <ul>
+          <li>
+            <a href="home">Home</a>
+          </li>
+          <li><a href="contact">Contact US</a></li>
+          <li><a class="log" href="login">Login</a></li>
+        </ul>
+      </nav>
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="container">
+      <div class="forms">
+        <div class="form login">
+          <span class="title">Login</span>
+
+          <form action="/auth/login" method="post">
+            <div class="input-field">
+              <input
+                name="username"
+                type="text"
+                placeholder="Enter your Username"
+                required
+              />
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="password"
+                type="password"
+                class="password"
+                placeholder="Enter your password"
+                required
+              />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="logCheck" />
+                <label for="logCheck" class="text">Remember me</label>
+              </div>
+
+              <a href="#" class="text">Forgot password?</a>
+            </div>
+
+            <div class="input-field button">
+              <input type="submit" value="Login" />
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text"
+              >Not a member?
+              <a href="#" class="text signup-link">Signup Now</a>
+            </span>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form signup">
+          <form action="/auth/register" method="post">
+            <span class="title">Registration</span>
+            <div class="column">
+              <div class="select-box">
+                <select name="title" class="sec">
+                  <option hidden>T I T L E</option>
+                  <option>MRS.</option>
+                  <option>MR.</option>
+                </select>
+              </div>
+              <style>
+                .select-box {
+                  position: relative;
+                  width: 100%;
+                  height: 50px;
+                  margin: 8px 0;
+                  background: #fff;
+                  border-radius: 5px;
+                  overflow: hidden;
+                  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+                }
+                .select-box select {
+                  width: 100%;
+                  height: 100%;
+                  padding: 0 15px;
+                  border: none;
+                  background: transparent;
+                  outline: none;
+                  appearance: none;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  font-size: 16px;
+                  font-weight: 500;
+                  color: #333;
+                  cursor: pointer;
+                }
+                .select-box::after {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  right: 15px;
+                  transform: translateY(-50%);
+                  width: 10px;
+                  height: 10px;
+                  border-top: 2px solid #333;
+                  border-right: 2px solid #333;
+                  pointer-events: none;
+                  transition: 0.3s;
+                }
+                .select-box.open::after {
+                  transform: translateY(-50%) rotate(45deg);
+                }
+              </style>
+              <div class="select-box">
+                <select class="sec" name="country">
+                  <option hidden>C O U N T R Y</option>
+                  <option>America</option>
+                  <option>Japan</option>
+                  <option>India</option>
+                  <option>Nepal</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-field">
+              <input
+                name="fName"
+                type="text"
+                placeholder="First Name "
+                required
+              />
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="lName"
+                type="text"
+                placeholder="Last Name"
+                required
+              />
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="username"
+                type="text"
+                placeholder="User Name"
+                required
+              />
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="email"
+                type="text"
+                placeholder="Enter your email"
+                required
+              />
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <input
+                name="password"
+                type="password"
+                class="password"
+                placeholder="password"
+                required
+              />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+            <!-- <div class="input-field">
+              <input
+                type="password"
+                class="password"
+                disabled="disabled"
+                placeholder="Confirm password"
+                required
+              />
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div> -->
+            <div class="input-field">
+              <input
+                name="address"
+                type="text"
+                placeholder="address"
+                required
+              />
+              <i class="uil uil-home"></i>
+            </div>
+            <div class="birth">
+              <label for="">Birth Day</label>
+              <input name="DoB" type="date" placeholder="Birth Day" required />
+            </div>
+
+            <style>
+              .birth {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0px 0;
+              }
+              .birth input {
+                width: 70%;
+                height: 50px;
+                padding: 0 15px;
+                border: none;
+                background: #fff;
+                border-radius: 5px;
+                outline: none;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+                font-size: 16px;
+                font-weight: 500;
+                color: #333;
+                cursor: pointer;
+              }
+              .birth label {
+                font-size: 16px;
+                font-weight: 500;
+                color: rgba(51, 51, 51, 0.714);
+                cursor: pointer;
+              }
+            </style>
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="termCon" />
+                <label for="termCon" class="text"
+                  >I accepted all terms and conditions</label
+                >
+              </div>
+            </div>
+
+            <div class="input-field button">
+              <button class="sing" type="Submit">Signup</button>
+            </div>
+
+            <div class="login-signup">
+              <span class="text"
+                >Already a member?
+                <a href="#" class="text login-link">Login Now</a>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="content">
+        <div class="left box">
+          <div class="upper">
+            <div class="topic">About us</div>
+            <p>
+              B Airways is a subsidiary of Virgin Airlines but functions
+              independently. It currently caters only to the needs of small
+              distance, internal flights in Indonesia. Hence, they do not
+              possess access to the advance airline reservation system of
+              Virgin.
+            </p>
+          </div>
+          <div class="lower">
+            <div class="topic">Contact us</div>
+            <div class="phone">
+              <a href="#"><i class="fas fa-phone-volume"></i>+947 9089 6767</a>
+            </div>
+            <div class="email">
+              <a href="#"><i class="fas fa-envelope"></i>bairline@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="middle box">
+          <div class="topic">Our Services</div>
+          <div><a href="#">Searching for flights</a></div>
+          <div><a href="#">Comparing prices</a></div>
+          <div><a href="#">Booking tickets</a></div>
+          <div><a href="#">Managing your booking</a></div>
+          <div><a href="#">Providing travel information</a></div>
+          <div><a href="#">Offering additional services</a></div>
+        </div>
+        <div class="right box">
+          <div class="topic">Subscribe us</div>
+          <form action="#">
+            <input type="text" placeholder="Enter email address" />
+            <input type="submit" name="#" value="Send" />
+            <div class="media-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <a href="/Admin/adminLogin" class="bt">ADMIN</a>
+            <style>
+              .bt {
+                background-color: black;
+                border: none;
+                color: white;
+                padding: 5px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 10px;
+                cursor: pointer;
+              }
+            </style>
+          </form>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+      const container = document.querySelector(".container"),
+        pwShowHide = document.querySelectorAll(".showHidePw"),
+        pwFields = document.querySelectorAll(".password"),
+        signUp = document.querySelector(".signup-link"),
+        login = document.querySelector(".login-link");
+
+      // const homebutton = document.getElementById("homebutton");
+      //   js code to show/hide password and change icon
+      pwShowHide.forEach((eyeIcon) => {
+        eyeIcon.addEventListener("click", () => {
+          pwFields.forEach((pwField) => {
+            if (pwField.type === "password") {
+              pwField.type = "text";
+
+              pwShowHide.forEach((icon) => {
+                icon.classList.replace("uil-eye-slash", "uil-eye");
+              });
+            } else {
+              pwField.type = "password";
+
+              pwShowHide.forEach((icon) => {
+                icon.classList.replace("uil-eye", "uil-eye-slash");
+              });
+            }
+          });
+        });
+      });
+
+      // js code to appear signup and login form
+      signUp.addEventListener("click", () => {
+        container.classList.add("active");
+      });
+      login.addEventListener("click", () => {
+        container.classList.remove("active");
+      });
+      // homebutton.addEventListener("click", (event) => {
+      //   event.preventDefault();
+      //   axios
+      //     .get("/home")
+      //     .then((res) => {
+      //       console.log(res);
+      //       // res.render("home");
+      //       document.innerHTML = res.data;
+      //       // return res.data;z
+      //     })
+      //     .catch((err) => {
+      //       console.error(err);
+      //     });
+      //   window.location.assign("/home");
+      // });
+    </script>
+  </body>
+</html>

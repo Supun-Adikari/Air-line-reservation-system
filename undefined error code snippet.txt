@@ -1,0 +1,9 @@
+<div>
+  <% const message = '' ;%> <%if (req && req.session && req.session.message) {
+  %> <% const message = req.session.message; %> <% if (typeof message !==
+  'undefined') { %>
+  <script>
+    alert("<%= message %>");
+  </script>
+  <% }; %> <% delete req.session.message;%> <% } %>
+</div>

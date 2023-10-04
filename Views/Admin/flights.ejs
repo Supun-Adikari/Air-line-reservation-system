@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Airplane Online Ticket Booking System Admin Panel</title>
+  <link rel="stylesheet" href="../stylse.css">
+</head>
+<body>
+  <h1 class="head">Airplane Online Ticket Booking System Admin Panel</h1>
+  <!-- navigation -->
+  <div class="wrapper">
+    <nav>
+        <ul>
+            <li><a href="/Admin/AdminHome">Home</a></li>
+            <li><a href="/Admin/Passengers">Passengers</a></li>
+            <li ><a href="/Admin/flights" class="page">flights</a></li>
+            <style>
+              .page{
+                color: #fff;
+                background-color: #000;
+              padding: 10px;
+              margin: 0% 0% 0% 0%;
+              }
+            </style>
+            <li><a href="adminLogin">log out</a></li>
+            <!-- <li><a href="#"></a></li> -->
+        </ul>
+    </nav>
+</div>  
+<div class="c">
+<h1 ><u>View All Bookings of searched Flight</u></h1><br>
+  <table id="flight-table">
+    <tr>
+      <th>Flight Number</th>
+      <th>Departure City</th>
+      <th>Arrival City</th>
+      <th>date</th>
+      <th>Departure Time</th>
+      <th>Arrival Time</th>
+        <th>Actions</th>
+    </tr>
+    <!-- Add rows for each booking here -->
+    <tr>
+      <td>AA123</td>
+      <td>Colombo</td>
+        <td>London</td>
+      <td>2022-01-01</td>
+      <td>04:00</td>
+        <td>06:00</td>
+      <td>
+        <button class="edit-button">Edit</button>
+        <button class="delete-button">Delete</button>
+      </td>
+    </tr>
+  </table><br>
+</div>
+  <script>
+    const currentURL = window.location.href;
+    console.log(currentURL); // outputs the URL of the current page
+  </script>
+</body>
+</html>
+     

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Airplane Online Ticket Booking System Admin Panel</title>
+    <link rel="stylesheet" href="../stylse.css" />
+  </head>
+  <!-- delet CSS file in hear -->
+  <body>
+    <h1 class="head">B Airplane Online Ticket Booking System Admin Panel</h1>
+    <!-- navigation -->
+    <div class="wrapper">
+      <nav>
+        <ul>
+          <li><a href="../Admin/AdminHome" class="page">Home</a></li>
+          <li><a href="../Admin/Passengers">Passengers</a></li>
+          <li><a href="../Admin/flights">flights</a></li>
+          <style>
+            .page {
+              color: #fff;
+              background-color: #000;
+              padding: 10px;
+              margin: 0% 0% 0% 0%;
+            }
+          </style>
+          <li><a href="adminLogin" id="logout-button">log out</a></li>
+          <!-- <li><a href="#"></a></li> -->
+        </ul>
+      </nav>
+    </div>
+    <div class="c">
+      <style>
+        /* styling for the first span element */
+        span:nth-child(1) {
+          color: black;
+          font-size: 18px;
+        }
+
+        /* styling for the second span element */
+        span:nth-child(2) {
+          color: black;
+          text-decoration: underline;
+          font-weight: bolder;
+        }
+
+        /* styling for the third span element */
+        span:nth-child(3) {
+          color: black;
+          font-size: 18px;
+        }
+      </style>
+      <h1>
+        Total Revenue = <span>$</span
+        ><span
+          ><%=(Number.parseFloat(current.revenue_AA380.total_revenue)+Number.parseFloat(current.revenue_B737.total_revenue)+Number.parseFloat(current.revenue_B757.total_revenue)).toFixed(2)%></span
+        >
+      </h1>
+      <div class="grid-container">
+        <div class="grid-item">
+          <h2>Revenue Of Airbus A380</h2>
+          <h1>
+            <span>$</span>
+            <span><%= current.revenue_AA380.total_revenue %></span>
+          </h1>
+        </div>
+        <div class="grid-item">
+          <h2>Revenue Of Boeing 737</h2>
+          <h1>
+            <span>$</span>
+            <span><%= current.revenue_B737.total_revenue %></span>
+          </h1>
+        </div>
+        <div class="grid-item">
+          <h2>Revenue Of Boeing 757</h2>
+          <h1>
+            <span>$</span>
+            <span><%= current.revenue_B757.total_revenue %></span>
+          </h1>
+        </div>
+      </div>
+      <style>
+        h1 {
+          color: black;
+        }
+        .grid-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 10px;
+        }
+
+        .grid-item {
+          background-color: rgba(100, 100, 100, 0.573);
+          border-radius: 10px;
+          padding: 20px;
+          text-align: center;
+        }
+      </style>
+    </div>
+
+    <div class="c">
+      <!-- Flights search form -->
+      <h2><i>Search for Flights</i></h2>
+      <form action="/admin/Passengers" method="GET" id="search-flights-form">
+        <label for="flight-id">Flight ID:</label><br />
+        <input
+          type="text"
+          id="flight-id"
+          name="flight_id"
+          placeholder="ABC123"
+          required
+        /><br /><br />
+        <input class="btn" type="submit" value="Search" />
+      </form>
+      <br />
+    </div>
+
+    <div class="c">
+      <h2><u>View All Bookings of Given Date Range</u></h2>
+      <br />
+      <form id="form1">
+        <label
+          >Start Date: <input type="date" required id="start_date1"
+        /></label>
+        <label>End Date: <input type="date" required id="end_date1" /></label>
+
+        <label
+          >Select City:
+          <select id="city1">
+            <option hidden>C I T Y</option>
+            <option value="CGK">CGK(Jakarta)</option>
+            <option value="DPS">DPS(Denpasar)</option>
+            <option value="BIA">BIA(Colombo)</option>
+            <option value="HRI">HRI(Hambantota)</option>
+            <option value="DEL">DEL(Delhi)</option>
+            <option value="BOM">BOM(Mumbai)</option>
+            <option value="MAA">MAA(Chennai)</option>
+            <option value="BKK">BKK(Bangkok)</option>
+            <option value="DMK">DMK(Don Mueang)</option>
+            <option value="SIN">SIN(Singapore)</option>
+            <option value="JFK">JFK(New York City)</option>
+          </select>
+          <button class="new-btn" id="btn1">Submit</button>
+          <style>
+            .new-btn {
+              background-color: #333333;
+              color: #ffffff;
+              padding: 10px;
+              border: none;
+              border-radius: 5px;
+              width: 100%;
+              cursor: pointer;
+            }
+            .new-btn:hover {
+              background-color: black;
+            }
+          </style>
+        </label>
+      </form>
+      <div id="gridContainer">
+        <div id="outputText"></div>
+      </div>
+
+      <style>
+        #gridContainer {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          grid-gap: 10px;
+        }
+        #outputText {
+          grid-column: 2 / 3;
+          grid-row: 2 / 3;
+          background-color: #e6e6e6;
+          font-size: 30px;
+          text-align: center;
+          padding: 10px;
+        }
+      </style>
+      <style>
+        form {
+          width: 400px; /* Set the width of the form */
+          margin: 50px auto; /* Center the form on the page */
+          text-align: center; /* Center the form's content */
+          padding: 30px; /* Add some padding to the form */
+          background-color: #ffffff; /* White background color for the form */
+          border: 1px solid #cccccc; /* Gray border for the form */
+          border-radius: 10px; /* Round the corners of the form */
+          box-shadow: 0px 0px 10px #cccccc; /* Add a shadow to the form */
+        }
+        form select {
+          width: 100%; /* Make the select field take up the full width of the form */
+          padding: 12px 20px; /* Add some padding to the select field */
+          margin-bottom: 20px; /* Add some margin at the bottom of the select field */
+          border: 1px solid #cccccc; /* Add a gray border to the select field */
+          border-radius: 5px; /* Round the corners of the select field */
+          box-sizing: border-box; /* Make sure the select field takes into account the border and padding */
+        }
+
+        /* Style the labels */
+        form label {
+          font-size: 20px;
+          font-weight: bold;
+          color: #333333;
+          margin-bottom: 10px;
+        }
+
+        /* Style the input fields */
+        form input[type="date"] {
+          width: 100%; /* Make the input fields take up the full width of the form */
+          padding: 12px 20px; /* Add some padding to the input fields */
+          margin-bottom: 20px; /* Add some margin at the bottom of the input fields */
+          border: 1px solid #cccccc; /* Add a gray border to the input fields */
+          border-radius: 5px; /* Round the corners of the input fields */
+          box-sizing: border-box; /* Make sure the input fields take into account the border and padding */
+        }
+      </style>
+    </div>
+    <div class="c">
+      <h2><u>View All Booking types for Given Date Range</u></h2>
+      <br />
+      <!-- make dashbord -->
+      <form id="">
+        <label
+          >Start Date: <input type="date" id="start_date2" required
+        /></label>
+        <label>End Date: <input type="date" id="end_date2" /></label>
+        <button class="new-btn" id="btn2">Submit</button>
+        <br />
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Count</th>
+          </tr>
+          <tr>
+            <td>Registered Customer</td>
+            <td id="Register_id"></td>
+          </tr>
+          <tr>
+            <td>Guest Customer</td>
+            <td id="Guest_id"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="c">
+      <h2>
+        <u
+          >Given Origin and Destination, All Past Flights & Passenger Counts
+          Data</u
+        >
+      </h2>
+      <br />
+      <!-- make dashbord -->
+      <form id="">
+        <label
+          >ORIGIN:
+          <select id="Dep_city3">
+            <option hidden>C I T Y</option>
+            <option value="CGK">CGK(Jakarta)</option>
+            <option value="DPS">DPS(Denpasar)</option>
+            <option value="BIA">BIA(Colombo)</option>
+            <option value="HRI">HRI(Hambantota)</option>
+            <option value="DEL">DEL(Delhi)</option>
+            <option value="BOM">BOM(Mumbai)</option>
+            <option value="MAA">MAA(Chennai)</option>
+            <option value="BKK">BKK(Bangkok)</option>
+            <option value="DMK">DMK(Don Mueang)</option>
+            <option value="SIN">SIN(Singapore)</option>
+            <option value="JFK">JFK(New York City)</option>
+          </select>
+          DESTINATION:
+          <select id="Dest_city3" required>
+            <option hidden>C I T Y</option>
+            <option value="CGK">CGK(Jakarta)</option>
+            <option value="DPS">DPS(Denpasar)</option>
+            <option value="BIA">BIA(Colombo)</option>
+            <option value="HRI">HRI(Hambantota)</option>
+            <option value="DEL">DEL(Delhi)</option>
+            <option value="BOM">BOM(Mumbai)</option>
+            <option value="MAA">MAA(Chennai)</option>
+            <option value="BKK">BKK(Bangkok)</option>
+            <option value="DMK">DMK(Don Mueang)</option>
+            <option value="SIN">SIN(Singapore)</option>
+            <option value="JFK">JFK(New York City)</option>
+          </select>
+          <button class="new-btn" type="submit" id="btn3">Submit</button>
+        </label>
+        <table id="oldFlightRows">
+          <thead>
+            <tr>
+              <th>flight_id</th>
+              <th>passengers_travelled</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="oldFlightRows"></tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+    <!-- <div class="c">
+      <h1><u>Add New Flight</u></h1>
+      <form id="add-flight-form">
+        <label for="flight-number">Flight Number:</label><br />
+        <input
+          type="text"
+          id="flight-number"
+          name="flight-number"
+          placeholder="ABC123"
+        /><br />
+        <label for="departure-city">Departure City:</label><br />
+        <input
+          type="text"
+          id="departure-city"
+          name="departure-city"
+          placeholder="City A"
+        /><br />
+        <label for="arrival-city">Arrival City:</label><br />
+        <input
+          type="text"
+          id="arrival-city"
+          name="arrival-city"
+          placeholder="City B"
+        /><br />
+        <label for="departure-time">Departure Time:</label><br />
+        <input type="time" id="appt" name="appt" /><br />
+        <label for="arrival-time">Arrival Time:</label><br />
+        <input type="text" id="arrival-time" name="arrival-time" /><br /><br />
+        <input class="btn" type="submit" value="Add Flight" />
+      </form>
+    </div> -->
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script>
+    const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.location.replace("AdminLogin");
+    });
+    // document
+    //   .getElementById("submitButton")
+    //   .addEventListener("click", displayText);
+
+    function displayText_report2(value1) {
+      event.preventDefault();
+      document.getElementById("outputText").innerHTML =
+        "TOTAL BOOKINGS : " + value1; // add value
+      document.getElementById("gridContainer").style.display = "grid";
+    }
+
+    function getNoBookings_Daterange(submitDetails) {
+      axios
+        .get("/admin/getNoBookings_Daterange", { params: submitDetails })
+        .then((res) => {
+          console.log(res);
+          displayText_report2(res.data.passenger_count);
+        })
+        .catch((err) => console.error(err));
+    }
+
+    function displayText_report3(value1, value2) {
+      event.preventDefault();
+      document.getElementById("Register_id").innerHTML = "" + value1;
+      document.getElementById("Guest_id").innerHTML = "" + value2;
+    }
+
+    function displayText_report4(value) {
+      if (!Array.isArray(value)) return;
+      let rows = "";
+      value.forEach((oldFlight) => {
+        rows += `<tr><td>${oldFlight.flight_id}</td><td>${oldFlight.passengers_travelled}</td></tr>`;
+      });
+      document
+        .getElementById("oldFlightRows")
+        .querySelector("tbody").innerHTML = rows;
+    }
+
+    function getBookingsByType(submitDetails) {
+      axios
+        .get("/admin/getBookingsByType", { params: submitDetails })
+        .then((res) => {
+          console.log(res);
+          displayText_report3(res.data.R, res.data.G);
+        })
+        .catch((err) => console.error(err));
+    }
+
+    function getOldflights(submitDetails) {
+      axios
+        .get("/admin/getOldflights", { params: submitDetails })
+        .then((res) => {
+          console.log(res);
+          displayText_report4(res.data);
+        })
+        .catch((err) => console.error(err));
+    }
+
+    const startdate = document.getElementById("start_date1");
+    const enddate = document.getElementById("end_date1");
+    const city = document.getElementById("city1");
+    const btn = document.getElementById("btn1");
+
+    const startdate2 = document.getElementById("start_date2");
+    const enddate2 = document.getElementById("end_date2");
+    const btn2 = document.getElementById("btn2");
+
+    const Dep_city = document.getElementById("Dep_city3");
+    const Dest_city = document.getElementById("Dest_city3");
+    const btn3 = document.getElementById("btn3");
+    const oldFlightRows = document.getElementById("oldFlightRows");
+
+    btn3.addEventListener("click", (event) => {
+      event.preventDefault();
+      const submitDetails = {
+        Dep_city: Dep_city.value,
+        Dest_city: Dest_city.value,
+      };
+      getOldflights(submitDetails);
+    });
+
+    // console.log(submitDetails);
+    // console.log("submitDetails thyena thana");
+    btn.addEventListener("click", (event) => {
+      event.preventDefault();
+      const submitDetails = {
+        startdate: startdate.value,
+        enddate: enddate.value,
+        city: city.value,
+      };
+      console.log("Event listener eka gannava");
+      getNoBookings_Daterange(submitDetails);
+    });
+
+    btn2.addEventListener("click", (event) => {
+      event.preventDefault();
+      const submitDetails = {
+        startdate: startdate2.value,
+        enddate: enddate2.value,
+      };
+      // const submitDetails = {
+      //   startdate: "2023-01-01",
+      //   enddate: "2023-02-01",
+      // };
+      console.log(submitDetails);
+      console.log("Event listener2 eka gannava");
+      getBookingsByType(submitDetails);
+    });
+  </script>
+</html>

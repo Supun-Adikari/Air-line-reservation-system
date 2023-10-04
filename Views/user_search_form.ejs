@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/user-search.css" />
+    <script
+      src="https://kit.fontawesome.com/9b207dd34b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Registration Form in HTML CSS</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="/user-search.css" />
+  </head>
+  <body>
+    <!-- NAVI -->
+    <div class="logo">
+      B Airline <i class="fa-solid fa-plane"></i>
+      <nav>
+        <ul>
+          <!-- <li><a href="home">Home</a></li> -->
+          <!-- <li><a href="contact">Contact Us</a></li> -->
+          <li><a href="book">My Account</a></li>
+          <li><a class="log" href="/home" id="DeleteButton">Log out</a></li>
+        </ul>
+      </nav>
+    </div>
+    <section class="container">
+      <header>FLIGHT SEARCH</header>
+      <form action="#" class="form">
+        <label>C I T Y</label>
+        <div class="column">
+          <div class="select-box">
+            <select>
+              <option hidden>F R O M</option>
+              <option value="CGK">CGK(Jakarta)</option>
+              <option value="DPS">DPS(Denpasar)</option>
+              <option value="BIA">BIA(Colombo)</option>
+              <option value="HRI">HRI(Hambantota)</option>
+              <option value="DEL">DEL(Delhi)</option>
+              <option value="BOM">BOM(Mumbai)</option>
+              <option value="MAA">MAA(Chennai)</option>
+              <option value="BKK">BKK(Bangkok)</option>
+              <option value="DMK">DMK(Don Mueang)</option>
+              <option value="SIN">SIN(Singapore)</option>
+              <option value="JFK">JFK(New York City)</option>
+            </select>
+          </div>
+          <div class="select-box">
+            <select>
+              <option hidden>T O</option>
+              <option value="CGK">CGK(Jakarta)</option>
+              <option value="DPS">DPS(Denpasar)</option>
+              <option value="BIA">BIA(Colombo)</option>
+              <option value="HRI">HRI(Hambantota)</option>
+              <option value="DEL">DEL(Delhi)</option>
+              <option value="BOM">BOM(Mumbai)</option>
+              <option value="MAA">MAA(Chennai)</option>
+              <option value="BKK">BKK(Bangkok)</option>
+              <option value="DMK">DMK(Don Mueang)</option>
+              <option value="SIN">SIN(Singapore)</option>
+              <option value="JFK">JFK(New York City)</option>
+            </select>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+            <label> D E P A R T U R E</label>
+            <input type="date" placeholder="FROM" required />
+          </div>
+          <div class="input-box">
+            <label>D E S T I N A T I O N</label>
+            <input type="date" placeholder="TO" required />
+          </div>
+        </div>
+
+        <button>Submit</button>
+      </form>
+    </section>
+  </body>
+</html>

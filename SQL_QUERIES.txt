@@ -1,0 +1,32 @@
+//Searching flights for users
+executeSQL('CALL search_flights(?, ?, ?, ?)', [origin, destination, from_date, to_date]);
+
+
+//Report 01
+executeSQL('CALL get_passenger_details(?)', [flight_id]);
+
+//Report 02
+executeSQL('CALL get_passenger_count(?, ?, ?)', [from_date, to_date, destination]);
+
+//Report 03
+executeSQL('CALL get_no_of_bookings(?, ?)', [from_date, to_date]);
+
+//Report 04
+executeSQL('CALL get_old_passengers(?, ?)', [origin, destination]);
+
+//Report 05
+executeSQL('SELECT total_revenue FROM total_revenue_by_type ORDER BY aircraft_type');
+
+//Guest awilla form eka fill karaama palleha Query dekama execute karanna ona
+//Users table ekata DATA dana widiha
+executeSQL('INSERT INTO users (title, f_name, l_name, DoB, email, country) VALUES (?, ?, ?, ?, ?, ?)', [title, fName, lName, dob, email, country]);
+
+
+//meka guest user karanawanan,  ticket booking daanna kalin insert karapu userge id eka ganna widihak balanna ona.
+//mokada user table ekee ee id ek auto increment weNNa dala thiyna hinda
+//form eka fill karana user submit karata passe uu insert karana data walin pahala query eka run karala id eka ganna
+executeSQL('SELECT id FROM users WHERE (title = ? AND f_name = ? AND l_name = ? AND DoB = ? AND email = ? AND country = ? AND user_category = 'G') LIMIT 1',[title , fName, lName, dob, email, country]);
+
+//ticket booking eka dana widiha (DEGOLLANTAMA EKAI)
+executeSQL('CALL create_new_ticket(?, ?, ?, ?, ?)', [ flight_id, seat_class, seat_id, user_id, child_or_adult]);
+//registered userlage user id eka token eken ganna puluwan wei kiyala hithanawa

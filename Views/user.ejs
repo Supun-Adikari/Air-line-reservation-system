@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/user.css" />
+    <script
+      src="https://kit.fontawesome.com/9b207dd34b.js"
+      crossorigin="anonymous"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="logo">
+      B Airline <i class="fa-solid fa-plane"></i>
+      <nav>
+        <ul>
+          <!-- display only logout -->
+          <!-- <li><a href="../home">Home</a></li> -->
+          <!-- <li><a href="../contact">Contact Us</a></li> -->
+          <!-- <li><a href="../book">My Account</a></li> -->
+          <li><a class="log" href="/home" id="DeleteButton">Log out</a></li>
+        </ul>
+      </nav>
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="wrap">
+      <div class="profile-card">
+        <div class="image">
+          <img
+            src="/male-profile-picture-vector-2051141.jpg"
+            alt=""
+            class="profile-img"
+          />
+        </div>
+        <input value="<%=user.token%>" type="text" id="user_input" hidden />
+
+        <div class="text-data">
+          <span class="name"
+            ><%= user.user.getFname()%> <%=user.user.getlname()%></span
+          >
+          <!-- ann any number -->
+          <span class="user-name"><%=user.user.getUserName()%></span>
+        </div>
+        <div id="box" class="box"></div>
+        <style>
+          .box {
+            height: 50px;
+            width: 300px;
+            border-radius: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            margin-top: 10px;
+          }
+          .box:hover {
+            /* cursor: pointer; */
+            transform: scale(1.1);
+          }
+        </style>
+        <div class="buttons">
+          <a href=" add all tikets page "
+            ><button class="button">Booked</button></a
+          >
+          <a href="/Booking/book.html">
+            <button class="button">Booking</button></a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script>
+    const color = "blue"; //GIVE THIS POINT TO ANY COLOR (BLUE,SILVER, GOLD)
+    const word = "WELCOME"; //GIVE THIS POINT TO ANY WORD(NEW,GOLD OR FREQUENT)
+    const box = document.getElementById("box");
+    box.style.backgroundColor = color;
+    box.innerText = word;
+
+    function customHeaders(token) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      };
+
+      axios
+        .delete("/registered/logout", config)
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
+    }
+    // logoutlink.addEventListener("click", async () => {
+    //   event.preventDefault(); // prevent the default action of the anchor tag
+    //   console.log(document.getElementById("user_id_input").value);
+    //   await fetch("/auth/logout", {
+    //     method: "POST",
+    //     body: {
+    //       user: {
+    //         profile_ID: document.getElementById("user_id_input").value,
+    //       },
+    //     },
+    //     headers: { "Content-Type": "application/json" },
+    //   });
+    // });
+    const token = "" + document.getElementById("user_input").value;
+    console.log("token eka thyena thana");
+    console.log(token);
+
+    const DeleteButton = document.getElementById("DeleteButton");
+    DeleteButton.addEventListener("click", async (event) => {
+      event.preventDefault();
+      window.location.replace("/home");
+      console.log(typeof token);
+      console.log("typeof token eka thyena thana");
+      customHeaders(token);
+    });
+    // testing files
+    //-----------------------------------------------------------
+    // localStorage.setItem("log_status", "<%= user.token %>");
+    // var log_status = localStorage.getItem("log_status");
+    // console.log("log_status eka thyena thana");
+    // console.log(log_status);
+    // console.log(`<%=user%>`);
+    //-----------------------------------------------------------
+    // We can use the above method to store the token in the local storage without storing it in the local storage.
+  </script>
+</html>

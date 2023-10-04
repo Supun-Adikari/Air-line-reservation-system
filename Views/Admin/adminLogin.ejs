@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login</title>
+    <style>
+      body {
+        background-color: rgba(128, 128, 128, 0.401);
+      }
+      .login-container {
+        position: relative;
+          top: 50%;
+          background-color: gray;
+          width: 500px;
+          margin: 200px auto;
+        text-align: center;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      input {
+        display: block;
+        width: 90%	;
+        margin: 10px 10px;
+        padding: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+      button {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      a {
+          margin-top: 10px;
+          text-decoration: none;
+          color: white;
+          padding: 10px;
+          font-size: smaller;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Log In</h1>
+      <form action="../auth/adminHome" method="post">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit" id="login-button">Log In</button>
+      </form>
+      <a href="../home">User Mode</a>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script>
+      function auth() {
+        if (user == "sanda" && pass == "Sanda@2000") {
+          window.location.assign("AdminHome.html");
+          alert("logging succes");
+        } else {
+          alert("Incorrect username or password");
+          return;
+        }
+      }
+    </script> -->
+  </body>
+</html>

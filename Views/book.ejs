@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/9b207dd34b.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/book.css" />
+    <title>Booking</title>
+  </head>
+  <body>
+    <div class="logo">
+      B Airline <i class="fa-solid fa-plane"></i>
+      <nav>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="feedback">Contact Us</a></li>
+          <li><a class="log" href="login">Login</a></li>
+        </ul>
+      </nav>
+      <i class="fa-solid fa-bars"></i>
+    </div>
+    <table>
+      <!-- route_id, flight_id, aircraft_id, flight_date, depature_time, remaining_tickets, flight_status, base_price -->
+      <tr class="cha-topic">
+        <th>route id</th>
+        <th>flight id</th>
+        <th>aircraft id</th>
+        <th>flight date</th>
+        <th>depature time</th>
+        <Th>remaining tickets</Th>
+        <Th>flight status</Th>
+        <Th>base price</Th>
+        <th>Book</th>
+      </tr>
+      <% data.forEach((flight) => { %>
+      <tr data-flight="<%= JSON.stringify(flight) %>">
+        <td><%= flight.route_id %></td>
+        <td><%= flight.flight_id %></td>
+        <td><%= flight.aircraft_id %></td>
+        <td><%= flight.flight_date %></td>
+        <td><%= flight.depature_time %></td>
+        <td><%= flight.remaining_tickets %></td>
+        <td><%= flight.flight_status %></td>
+        <td><%= flight.base_price %></td>
+        <td>
+          <button class="book-button" id="bookButton-<%= flight.flight_id %>">
+            Book<i class="fas fa-plane" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+      <% }); %>
+    </table>
+  </body>
+  <script>
+    // const flightid = document.getElementById("flightid").value;
+    // document.getElementById(`bookButton-${flightid}`).addEventListener(
+    //   "click",
+    //   function () {
+    //     const flightData = JSON.parse(this.closest("tr").dataset.flight);
+    //     console.log(flightData);
+    //     console.log("flight booked");
+    //     axios
+    //       .post("/booking", flightData)
+    //       .then((response) => {
+    //         // handle the response
+    //       })
+    //       .catch((error) => {
+    //         // handle the error
+    //       });
+    //   }.bind(null, flight)
+    // );
+    document.querySelectorAll(".book-button").forEach((button) => {
+      button.addEventListener("click", function () {
+        const flight_id = this.id.split("-")[1];
+        const flightData = JSON.parse(this.closest("tr").dataset.flight);
+        console.log(flightData);
+        console.log("booked flight");
+
+        localStorage.setItem("flightid", ''+flight_id); // store flight data in local storage
+        window.location.assign("guest_ticket");
+      });
+    });
+  </script>
+</html>
